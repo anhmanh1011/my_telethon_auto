@@ -4,7 +4,7 @@ import time
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ForwardMessagesRequest
-from telethon.tl.types import Channel, InputPeerChannel, InputPeerChat, InputPeerSelf
+from telethon.tl.types import InputPeerSelf
 
 # Use your own values from my.telegram.org
 api_id = 28921419
@@ -34,7 +34,7 @@ def forward_message_toChat(client: TelegramClient, arr: []):
                 to_peer=client.get_input_entity(username)
             ))
             print(" wirte to channel name" + username + ' Successfully')
-            time.sleep(30)
+            time.sleep(10)
         except Exception as e:
             print(f'write to channel {username} error {e}')
             error: str = str(e)
@@ -111,4 +111,6 @@ def main():
 
 
 with client:
-    main()
+    while True:
+        main()
+        time.sleep(600)
